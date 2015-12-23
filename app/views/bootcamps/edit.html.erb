@@ -1,0 +1,21 @@
+<% form_for "/bootcamps" do %>
+
+<div>
+<%= label_tag :name %>
+<%= text_field_tag :name, @bootcamp["name"] %>
+</div>
+<div>
+<%= label_tag :location %>
+<%= text_field_tag :location, @bootcamp["location"] %>
+</div>
+<div>
+<%= label_tag :duration %>
+<%= text_field_tag :duration, @bootcamp["duration"] %>
+</div>
+<div>
+<%= label_tag :price %>
+<%= text_field_tag :price, @bootcamp["price"] %>
+</div>
+<%= submit_tag "update Camp" %>
+
+<% end %>

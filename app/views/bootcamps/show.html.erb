@@ -1,0 +1,9 @@
+
+<ul>
+<li><%= @bootcamp.name %></li>
+<li><%= @bootcamp.location %></li>
+<li><%= @bootcamp.duration %></li>
+<li><%= @bootcamp.price %></li>
+</ul>
+
+<%= link_to "Delete Me", "/camps/#{params[:id]}", method: :delete %>

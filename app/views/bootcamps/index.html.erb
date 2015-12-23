@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Duration</th>
+    <th>price</th>
+  </tr>
+
+  <% @bootcamps.each do |bootcamp| %>
+    <tr>
+      <td><%= bootcamp.name %></td>
+      <td><%= bootcamp.location %></td>
+      <td><%= bootcamp.duration %></td>
+      <td><%= bootcamp.price %></td>
+    </tr>
+  <% end %>
+</table>
