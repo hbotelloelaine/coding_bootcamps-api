@@ -12,7 +12,7 @@ class Bootcamp
 
   def self.all
     bootcamp = []
-    bootcamp_hashes = Unirest.get("http://localhost:3000/camps.json").body
+    bootcamp_hashes = Unirest.get("#{ENV['API_BASE_URL']}/camps.json", headers: {"X-User-Email": "test@test.com", "Authorization": "Token token=test"}).body
     bootcamp_hashes.each do |bootcamp_hash|
       bootcamp << Bootcamp.new(bootcamp_hash)
     end
@@ -20,16 +20,21 @@ class Bootcamp
   end
 
   def self.find(id)
-    bootcamp_hash = Unirest.get("http://localhost:3000/camps/#{id}.json").body
+    bootcamp_hash = Unirest.get("#{ENV['API_BASE_URL']}/camps/#{id}.json").body
     Bootcamp.new(bootcamp_hash)
   end
 
-  def self.create
-     @bootcamp= Unirest.post("http://localhost:3000/camps.json", headers: {"Accept" => "application/json"}, parameters: {name: params[:name], location: params[:location], duration: params[:duration], price: params[:price]}).body
+  def self.create(attributes)
+     bootcamp_hash = Unirest.post("#{ENV['API_BASE_URL']}/camps.json", headers: {"Accept" => "application/json"}, parameters: attributes).body
+  end
+
+  def update(attributes)
+    bootcamp_hash = Unirest.patch("#{ENV['API_BASE_URL']}/camps/#{id}.json", headers: {"Accept" => "application/json"}, parameters: attributes).body
+    bootcamp.new(bootcamp_hash)
   end
 
   def destroy(params)
-    bootcamp = Unirest.delete("http://localhost:3000/camps/#{id}.json").body
+    Unirest.delete("#{ENV['API_BASE_URL']}/camps/#{id}.json").body
   end
 end
  

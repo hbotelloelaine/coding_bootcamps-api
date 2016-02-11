@@ -10,7 +10,8 @@ class BootcampsController < ApplicationController
   def new
   end
   def create
-    @employee = Bootcamp.create(name: params[:name], loctation: params[:duration], price: params,[:price])
+    @bootcamp = Bootcamp.create(name: params[:name], loctation: params[:location], duration: params[:duration], price: params[:price])
+    redirect_to "/bootcamps/#{@bootcamp.id}"
   end
 
   # def create
